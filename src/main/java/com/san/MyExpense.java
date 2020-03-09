@@ -1,5 +1,7 @@
 package com.san;
 
+import org.apache.log4j.Logger;
+
 /**
  * @author Sangram Konde
  *
@@ -8,6 +10,7 @@ package com.san;
  */
 public class MyExpense {
 
+    static final Logger logger = Logger.getLogger(MyExpense.class);
     private Double expense = null;
 
     /**
@@ -19,12 +22,12 @@ public class MyExpense {
      */
     public Double getExpense(String userId, String expenseType) {
 
-        System.out.println("Getting expenses....");
+        logger.info("Getting expenses....");
         if (null != userId && !userId.isEmpty()) {
 
             expenseType = (null == expenseType || expenseType.isEmpty()) ? "Monthly" : expenseType;
 
-            System.out.println("Calculating '" + expenseType + "' expense for user '"+ userId+"'");
+            logger.info("Calculating '" + expenseType + "' expense for user '"+ userId+"'");
             if (null != expenseType || !expenseType.isEmpty()) {
                 if (expenseType.equalsIgnoreCase("Yearly")) {
 
@@ -39,8 +42,8 @@ public class MyExpense {
                     expense = 80.0;
                 }
             }
-            System.out.println(expenseType + "' expenses for user '"+userId+"' is : " + expense);
-            System.out.println("======================================================");
+            logger.info(expenseType + "' expenses for user '"+userId+"' is : " + expense);
+            logger.info("======================================================");
         } else {
             throw new IllegalArgumentException(String.format(
                     "Parameter << userId >> is not valid"
@@ -60,12 +63,12 @@ public class MyExpense {
     public void addExpense(String userId, String expenseType, Double expenseAmount) {
 
         // TODO : provide actual implementation
-        System.out.println("Adding expenses...");
+        logger.info("Adding expenses...");
         if (null != userId && !userId.isEmpty()) {
 
             if(null != expenseType && !expenseType.isEmpty()){
-                System.out.println("Your '" + expenseType + "' expenses for amount '" + expenseAmount + "' has been added.");
-                System.out.println("======================================================");
+                logger.info("Your '" + expenseType + "' expenses for amount '" + expenseAmount + "' has been added.");
+                logger.info("======================================================");
             }else{
                 throw new IllegalArgumentException(String.format(
                         "Parameter << expenseType >> is not valid"

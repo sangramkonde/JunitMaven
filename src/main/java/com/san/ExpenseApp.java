@@ -1,5 +1,7 @@
 package com.san;
 
+import org.apache.log4j.BasicConfigurator;
+
 /**
  * @author Sangram Konde
  *
@@ -7,6 +9,8 @@ package com.san;
 public class ExpenseApp {
 
     public static void main(String[] args) {
+
+        BasicConfigurator.configure();
 
         MyExpense myExpense = new MyExpense();
 
